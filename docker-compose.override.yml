@@ -1,0 +1,30 @@
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - ./api:/app
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app
+  mongo:
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo/data/db:/data/db
+  web:
+    container_name: web
+    build:
+      context: ./nginx-dev
+      dockerfile: Dockerfile.dev
+    ports:
+      - 80:80
+    depends_on:
+      - api
+      - frontend

@@ -1,0 +1,56 @@
+.Dark-bg {
+  background-color: var(--dark);
+  color: var(--primary);
+}
+
+.App {
+  padding: 0.5rem;
+}
+
+.App-header {
+  margin-bottom: 4rem;
+  display: flex;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+.Flex-1 {
+  flex: 1;
+}
+
+.auto-left {
+  margin-left: auto;
+}
+
+.space-left {
+  margin-left: 1rem;
+}
+
+.space-right {
+  margin-right: 1rem;
+}
+
+.App-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* font-size: 2rem; */
+  line-height: 1.2;
+  padding: 0 2vw;
+}
+
+@media (min-width: 1300px) {
+  .App-body {
+    padding: 0 8vw;
+  }
+}
+
+.App-link,
+a:link {
+  color: #fb9961;
+}
+
+a:visited {
+  color: #d18052;
+}

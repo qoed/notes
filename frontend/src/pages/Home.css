@@ -1,0 +1,18 @@
+.Search-box {
+  font-family: inherit;
+  font-size: 1.6rem;
+  padding: 0.5rem 1rem;
+  display: block;
+  color: var(--dark);
+  background-color: var(--primary);
+  border: none;
+  border-radius: 0.2rem;
+}
+
+.Search-box:focus-visible {
+  outline: none;
+}
+
+.Search-box:disabled {
+  background-color: var(--primary-disabled);
+}

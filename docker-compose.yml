@@ -1,0 +1,10 @@
+services:
+  api:
+    container_name: api
+    depends_on:
+      - mongo
+  frontend:
+    container_name: frontend
+  mongo:
+    container_name: mongo
+    image: mongo

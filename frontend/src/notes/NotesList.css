@@ -1,0 +1,30 @@
+.Notes-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  color: var(--dark);
+}
+
+@media (min-width: 768px) {
+  .Notes-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1300px) {
+  .Notes-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1920px) {
+  .Notes-list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 2560px) {
+  .Notes-list {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}

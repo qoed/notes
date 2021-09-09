@@ -1,0 +1,44 @@
+.Note-item-container {
+  position: relative;
+}
+
+.Note-item {
+  border: 1px solid var(--primary);
+  border-radius: 0.2rem;
+  color: var(--primary);
+  height: 15rem;
+  overflow: hidden;
+  padding: 0.5rem 1rem;
+}
+
+.Note-item img {
+  display: none;
+}
+
+.Note-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  border-radius: 0.2rem;
+}
+
+.Note-overlay:hover {
+  border: 3px solid var(--primary);
+  padding: 0.3rem 0.8rem;
+}
+
+.Pin-icon {
+  color: var(--primary);
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: none;
+  cursor: pointer;
+}
+
+.Note-item-container:hover .Pin-icon {
+  display: block;
+}
