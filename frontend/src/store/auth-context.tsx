@@ -13,7 +13,6 @@ interface AuthContextInterface {
   user: User | null;
   setAuthenticated: (val: boolean) => void;
   setUser: (user: User) => void;
-  login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   deleteUser: () => Promise<void>;
   getMe: () => Promise<void>;
@@ -24,7 +23,6 @@ const AuthContext = React.createContext<AuthContextInterface>({
   user: null,
   setAuthenticated: () => {},
   setUser: () => {},
-  login: async (email, password) => {},
   logout: async () => {},
   deleteUser: async () => {},
   getMe: async () => {},
@@ -60,25 +58,6 @@ export const AuthContextProvider: React.FC<{}> = ({ children }) => {
     [history]
   );
 
-  async function login(email: string, password: string) {
-    const res = await axios.post(
-      `${process.env.REACT_APP_API_URL}/auth/login`,
-      {
-        email,
-        password,
-      },
-      {
-        withCredentials: true,
-      }
-    );
-
-    if (res.status === 200) {
-      setAuthenticated(true);
-      await getMe();
-      history.push('/');
-    }
-  }
-
   async function logout() {
     const res = await axios.get<{ success: boolean; data: object }>(
       `${process.env.REACT_APP_API_URL}/auth/logout`
@@ -107,7 +86,6 @@ export const AuthContextProvider: React.FC<{}> = ({ children }) => {
         user,
         setAuthenticated,
         setUser,
-        login,
         logout,
         deleteUser,
         getMe,
