@@ -73,7 +73,6 @@ export const AuthContextProvider: React.FC<{}> = ({ children }) => {
       `${process.env.REACT_APP_API_URL}/auth/delete`
     );
     if (res.status === 200) {
-      console.log(res.data);
       setAuthenticated(false);
       history.push('/auth');
     }
