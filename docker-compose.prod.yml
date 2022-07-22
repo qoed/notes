@@ -5,7 +5,7 @@ services:
       context: ./api
       dockerfile: Dockerfile
     ports:
-      - 4200:4200
+      - 4003:4200
     volumes:
       - /app/node_modules
       - ./api:/app
@@ -15,7 +15,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - 3003:3000
     volumes:
       - /app/node_modules
       - ./frontend:/app
