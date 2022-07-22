@@ -9,7 +9,8 @@ interface Props {
   onDeleteUser?: (e: React.MouseEvent) => void;
 }
 
-const StyledButton = styled.div`
+const StyledButton = styled.button`
+  border: none;
   border-radius: 50%;
   width: 4.2rem;
   height: 4.2rem;
@@ -24,14 +25,6 @@ const StyledButton = styled.div`
     height: auto;
     object-fit: contain;
   }
-`;
-
-const DropDownBackdrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 `;
 
 const UserDropDown = styled.div`
@@ -88,31 +81,33 @@ const UserMenu: React.FC<Props> = ({ user, classes, onSignout, onDeleteUser }) =
   const [showUserDropdown, setShowUserDropdown] = useState(false);
 
   function toggleMenu(e: React.MouseEvent) {
-    setShowUserDropdown(!showUserDropdown);
+    setShowUserDropdown((prevState) => !prevState);
+  }
+
+  function handleBlur(e: React.FocusEvent) {
+    setShowUserDropdown(false);
   }
 
   return (
     <React.Fragment>
-      <StyledButton onClick={toggleMenu} className={classes}>
+      <StyledButton onClick={toggleMenu} className={classes} onBlur={handleBlur}>
         <img src={user.avatar} alt='avatar' />
       </StyledButton>
       {showUserDropdown && (
         <>
-          <DropDownBackdrop onClick={toggleMenu} />
-          <UserDropDown onClick={() => setShowUserDropdown(false)}>
+          <UserDropDown>
             <DropDownItem>
               Signed in as <span className='username'>{user.name}</span> (
               {user.email || 'no public email'})
             </DropDownItem>
-
             <DropdownDivider />
             <DropDownItem>
-              <Button logout type='button' onClick={onSignout} className='w-100 space-right'>
+              <Button logout type='button' onMouseDown={onSignout} className='w-100 space-right'>
                 Sign out
               </Button>
             </DropDownItem>
             <DropDownItem>
-              <Button logout type='button' onClick={onDeleteUser} className='w-100 space-right'>
+              <Button logout type='button' onMouseDown={onDeleteUser} className='w-100 space-right'>
                 Delete user account
               </Button>
             </DropDownItem>
